@@ -1,0 +1,20 @@
+# Este archivo debe quedar en la RAIZ del repositorio (junto a package.json).
+[build]
+  base      = ""
+  publish   = "public"
+  functions = "netlify/functions"
+  command   = "echo 'Sin compilacion: sitio estatico + funcion api'"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api/:splat"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
